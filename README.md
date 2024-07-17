@@ -1,14 +1,13 @@
-## fork
+# TkinterDnD2 (Fork)
 
-this is fork of [tkinterdnd2](https://github.com/pmgagne/tkinterdnd2) which is a python wrapper for [tkdnd](https://github.com/petasis/tkdnd)
-.
+This is a fork in a long line of forks.
+The original [tkinterdnd2](https://github.com/pmgagne/tkinterdnd2) bt pmgagne became unmaintained and was forked by [Eliav2](https://github.com/Eliav2/tkinterdnd2) in order to be listed as a PyPI package. It too, unfortunately appears to have become unmaintained. This repository aims to maintain it at a minimum for my own purposes. I will be reviewing the improvement recommendations from the older repositories and implementing them here. Those recommendations (which were really reasonable) never were implemented nor even received comments in greater than 2 years. 
 
-this repo forked and edited to be published to pypi so one could simply install this package
-with  `pip install tkinterdnd2`.
+But what is the project really? `tkinterdnd2` is a wrapper for [tkdnd](https://github.com/petasis/tkdnd). TkDnD is the addition of Drag-and-Drop capabilities to Tk, a cross-platform toolki for making user-interfaces. TkinterDnD2 is then intended for implementing those drag-and-drop capabilities easily into Tkinter (and thus Python) GUI applications.
 
-## install
+This repository is not yet on PyPI, but may be in the future.
 
-`python -m pip install tkinterdnd2`
+The following is the documentation from previous versions of this project, and has yet to be updated:
 
 ## usage
 
