@@ -23,12 +23,7 @@ tkinter.Tk() window. This will add the drag-and-drop specific methods to the
 Tk window and all its descendants.
 '''
 
-try:
-    import Tkinter as tkinter
-    import Tix as tix
-except ImportError:
-    import tkinter
-    from tkinter import tix
+import tkinter
 
 TkdndVersion = None
 
@@ -282,11 +277,4 @@ class Tk(tkinter.Tk, DnDWrapper):
     DnDWrapper class apply to this window and all its descendants.'''
     def __init__(self, *args, **kw):
         tkinter.Tk.__init__(self, *args, **kw)
-        self.TkdndVersion = _require(self)
-
-class TixTk(tix.Tk, DnDWrapper):
-    '''Creates a new instance of a tix.Tk() window; all methods of the
-    DnDWrapper class apply to this window and all its descendants.'''
-    def __init__(self, *args, **kw):
-        tix.Tk.__init__(self, *args, **kw)
         self.TkdndVersion = _require(self)
