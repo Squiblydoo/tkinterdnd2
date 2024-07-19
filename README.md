@@ -64,4 +64,3 @@ your project, then:
 
     pyinstaller -F -w myproject/myproject.py --additional-hooks-dir=.
 
-
