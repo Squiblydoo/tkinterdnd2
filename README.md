@@ -1,9 +1,9 @@
 ## fork
 
-this is fork of [tkinterdnd2](https://github.com/pmgagne/tkinterdnd2) which is a python wrapper for [tkdnd](https://github.com/petasis/tkdnd)
+[Eliav2/tkinterdnd2](https://github.com/Eliav2/tkinterdnd2) is a fork of the (unmaintained) [pmgagne/tkinterdnd2](https://github.com/pmgagne/tkinterdnd2) which is a python wrapper for [tkdnd](https://github.com/petasis/tkdnd)
 .
 
-this repo forked and edited to be published to pypi so one could simply install this package
+The repo was forked and edited to be published to pypi so one could simply install this package
 with  `pip install tkinterdnd2`.
 
 ## install
