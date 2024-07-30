@@ -10,25 +10,19 @@ Once the TkinterDnD2 package is installed, it is safe to do:
 
 from TkinterDnD2 import *
 
-This will add the classes TkinterDnD.Tk and TkinterDnD.TixTk to the global
+This will add the classes TkinterDnD.Tk to the global
 namespace, plus the following constants:
 PRIVATE, NONE, ASK, COPY, MOVE, LINK, REFUSE_DROP,
 DND_TEXT, DND_FILES, DND_ALL, CF_UNICODETEXT, CF_TEXT, CF_HDROP,
 FileGroupDescriptor, FileGroupDescriptorW
 
 Drag and drop for the application can then be enabled by using one of the
-classes TkinterDnD.Tk() or (in case the tix extension shall be used)
-TkinterDnD.TixTk() as application main window instead of a regular
+classes TkinterDnD.Tk() as application main window instead of a regular
 tkinter.Tk() window. This will add the drag-and-drop specific methods to the
 Tk window and all its descendants.
 '''
 
-try:
-    import Tkinter as tkinter
-    import Tix as tix
-except ImportError:
-    import tkinter
-    from tkinter import tix
+import tkinter
 
 TkdndVersion = None
 
@@ -284,9 +278,3 @@ class Tk(tkinter.Tk, DnDWrapper):
         tkinter.Tk.__init__(self, *args, **kw)
         self.TkdndVersion = _require(self)
 
-class TixTk(tix.Tk, DnDWrapper):
-    '''Creates a new instance of a tix.Tk() window; all methods of the
-    DnDWrapper class apply to this window and all its descendants.'''
-    def __init__(self, *args, **kw):
-        tix.Tk.__init__(self, *args, **kw)
-        self.TkdndVersion = _require(self)
