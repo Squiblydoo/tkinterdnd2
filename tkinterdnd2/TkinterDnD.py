@@ -33,12 +33,20 @@ def _require(tkroot):
         import os.path
         import platform
 
-        if platform.system()=="Darwin":
-            tkdnd_platform_rep = "osx64"
-        elif platform.system()=="Linux":
-            tkdnd_platform_rep = "linux64"
-        elif platform.system()=="Windows":
-            tkdnd_platform_rep = "win64"
+        if platform.system()=="Darwin" and platform.machine()=="arm64":
+            tkdnd_platform_rep = "osx-arm64"
+        elif platform.system()=="Darwin" and platform.machine()=="x86_64":
+            tkdnd_platform_rep = "osx-x64"
+        elif platform.system()=="Linux" and platform.machine()=="aarch64":
+            tkdnd_platform_rep = "linux-arm64"
+        elif platform.system()=="Linux" and platform.machine()=="x86_64":
+            tkdnd_platform_rep = "linux-x64"
+        elif platform.system()=="Windows" and platform.machine()=="ARM64":
+            tkdnd_platform_rep = "win-arm64"
+        elif platform.system()=="Windows" and platform.machine()=="AMD64":
+            tkdnd_platform_rep = "win-x64"
+        elif platform.system()=="Windows" and platform.machine()=="x86":
+            tkdnd_platform_rep = "win-x86"
         else:
             raise RuntimeError('Plaform not supported.')
         

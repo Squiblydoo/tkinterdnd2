@@ -10,6 +10,7 @@ import os
 import platform
 from PyInstaller.utils.hooks import collect_data_files, collect_dynamic_libs
 
+
 s = platform.system()
 p = {
     'Windows': ('win64', {'tkdnd_unix.tcl', 'tkdnd_macosx.tcl'}),
@@ -26,3 +27,4 @@ if s in p:
     ])
 else:
     raise RuntimeError(f'TkinterDnD2 is not supported on platform "{s}".')
+
