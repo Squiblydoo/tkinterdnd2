@@ -15,7 +15,7 @@ s = platform.system()
 p = {
     'Windows': ({'win-arm64', 'win-x86', 'win-x64' },{'tkdnd_unix.tcl', 'tkdnd_macosx.tcl'}),
     'Linux': ({'linux-x64', 'linux-arm64'}, {'tkdnd_windows.tcl', 'tkdnd_macosx.tcl'}),
-    'Darwin': ({'osx-x64', 'osx-arm64'} {'tkdnd_windows.tcl', 'tkdnd_unix.tcl'}),
+    'Darwin': ({'osx-x64', 'osx-arm64'}, {'tkdnd_windows.tcl', 'tkdnd_unix.tcl'}),
 }
 if s in p:
     datas = set([
