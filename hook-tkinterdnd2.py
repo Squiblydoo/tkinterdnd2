@@ -27,3 +27,4 @@ if s in p:
     ])
 else:
     raise RuntimeError(f'TkinterDnD2 is not supported on platform "{s}".')
+
