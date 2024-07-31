@@ -1,3 +1,6 @@
+0.4.2
+    - Fixed an error in hook file due to the omission of a comma. I didn't do enough testing across systems.
+
 0.4.1
     - Fixed error in hook file which failed to account for new architechures. 
 
