@@ -15,7 +15,7 @@ setuptools.setup(
     include_package_data=True,
     package_data={
         # Include tkdnd extension files.
-        "tkinterdnd2": ["tkdnd/linux-x64/*.*", "tkdnd/linux-arm64/*.*", "tkdnd/osx-x64/*.*", "tkdnd/osx-arm64/*.*", "tkdnd/win-x64/*.*", "tkdnd/win-arm64/*.*"],
+        "tkinterdnd2": ["tkdnd/linux-x64/*.*", "tkdnd/linux-arm64/*.*", "tkdnd/osx-x64/*.*", "tkdnd/osx-arm64/*.*", "tkdnd/win-x64/*.*", "tkdnd/win-x86/*.*", "tkdnd/win-arm64/*.*"],
     },
     classifiers=[
         "Development Status :: 2 - Pre-Alpha",
