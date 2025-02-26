@@ -30,26 +30,40 @@ def _require(tkroot):
     '''Internal function.'''
     global TkdndVersion
     try:
-        import os.path
+        import os
         import platform
 
-        if platform.system()=="Darwin" and platform.machine()=="arm64":
+        # On Windows, platform.machine() returns the identifier of the
+        # *host* architecture, which does not necessarily match the
+        # architecture of the running python process. For example, when
+        # running x86 python under x64 Windows, the return value is AMD64;
+        # when running either x86 or x64 python under arm64 Windows, the
+        # return value is ARM64. The architecture of the running process
+        # can be obtained from the PROCESSOR_ARCHITECTURE environment variable,
+        # which is automatically set by Windows / WOW subsystem.
+        system = platform.system()
+        if system=="Windows":
+            machine = os.environ.get('PROCESSOR_ARCHITECTURE', platform.machine())
+        else:
+            machine = platform.machine()
+
+        if system=="Darwin" and machine=="arm64":
             tkdnd_platform_rep = "osx-arm64"
-        elif platform.system()=="Darwin" and platform.machine()=="x86_64":
+        elif system=="Darwin" and machine=="x86_64":
             tkdnd_platform_rep = "osx-x64"
-        elif platform.system()=="Linux" and platform.machine()=="aarch64":
+        elif system=="Linux" and machine=="aarch64":
             tkdnd_platform_rep = "linux-arm64"
-        elif platform.system()=="Linux" and platform.machine()=="x86_64":
+        elif system=="Linux" and machine=="x86_64":
             tkdnd_platform_rep = "linux-x64"
-        elif platform.system()=="Windows" and platform.machine()=="ARM64":
+        elif system=="Windows" and machine=="ARM64":
             tkdnd_platform_rep = "win-arm64"
-        elif platform.system()=="Windows" and platform.machine()=="AMD64":
+        elif system=="Windows" and machine=="AMD64":
             tkdnd_platform_rep = "win-x64"
-        elif platform.system()=="Windows" and platform.machine()=="x86":
+        elif system=="Windows" and machine=="x86":
             tkdnd_platform_rep = "win-x86"
         else:
             raise RuntimeError('Plaform not supported.')
-        
+
         module_path = os.path.join(os.path.dirname(__file__), 'tkdnd', tkdnd_platform_rep)
         tkroot.tk.call('lappend', 'auto_path', module_path)
         TkdndVersion = tkroot.tk.call('package', 'require', 'tkdnd')
