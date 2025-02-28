@@ -1,6 +1,5 @@
 0.4.3
     - Improved architecture detection thanks to @rokm
-    - Updated included some tkdnd binaries to 2.9.5; I am still testing the macOS built ones.
 
 0.4.2
     - Fixed an error in hook file due to the omission of a comma. I didn't do enough testing across systems.
