@@ -231,7 +231,7 @@ proc xdnd::normalise_data { type data } {
     STRING - UTF8_STRING - TEXT - COMPOUND_TEXT {return $data}
     text/html {
       if {[catch {
-            ::tkdnd::from_encoding unicode $data
+            encoding convertfrom unicode $data
            } string]} {
         set string $data
       }
@@ -241,7 +241,7 @@ proc xdnd::normalise_data { type data } {
     text/plain\;charset=utf-8 -
     text/plain {
       if {[catch {
-            ::tkdnd::from_encoding utf-8 [tkdnd::bytes_to_string $data]
+            encoding convertfrom utf-8 [tkdnd::bytes_to_string $data]
            } string]} {
         set string $data
       }
@@ -249,7 +249,7 @@ proc xdnd::normalise_data { type data } {
     }
     text/uri-list* {
       if {[catch {
-            ::tkdnd::from_encoding utf-8 [tkdnd::bytes_to_string $data]
+            encoding convertfrom utf-8 [tkdnd::bytes_to_string $data]
           } string]} {
         set string $data
       }
@@ -800,7 +800,7 @@ proc xdnd::_SendData {type offset bytes args} {
     ## Prepare the data to be transferred...
     switch -glob $type {
       text/plain* - UTF8_STRING - STRING - TEXT - COMPOUND_TEXT {
-        binary scan [::tkdnd::to_encoding utf-8 $typed_data] \
+        binary scan [encoding convertto utf-8 $typed_data] \
                     c* _dodragdrop_transfer_data
         set _dodragdrop_transfer_data \
            [_convert_to_unsigned $_dodragdrop_transfer_data $format]
@@ -813,7 +813,7 @@ proc xdnd::_SendData {type offset bytes args} {
             default   {lappend files file://$file}
           }
         }
-        binary scan [::tkdnd::to_encoding utf-8 "[join $files \r\n]\r\n"] \
+        binary scan [encoding convertto utf-8 "[join $files \r\n]\r\n"] \
                     c* _dodragdrop_transfer_data
         set _dodragdrop_transfer_data \
            [_convert_to_unsigned $_dodragdrop_transfer_data $format]
@@ -849,7 +849,7 @@ proc xdnd::_SendData {type offset bytes args} {
   set data [lrange $_dodragdrop_transfer_data $offset [expr {$offset+$bytes-1}]]
   switch $format {
     8  {
-      set data [::tkdnd::from_encoding utf-8 [binary format c* $data]]
+      set data [encoding convertfrom utf-8 [binary format c* $data]]
     }
     16 {
       variable _dodragdrop_selection_requestor
