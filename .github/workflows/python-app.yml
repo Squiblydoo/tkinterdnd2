@@ -10,8 +10,11 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-        with:
-          ref:9a55907e430234bf8ab72ea614f84af9cc89598c
+
+      - name: Checkout specific commit
+        run: |
+          git fetch --depth=1 origin 9a55907e430234bf8ab72ea614f84af9cc89598c
+          git checkout 9a55907e430234bf8ab72ea614f84af9cc89598c
 
       - name: Install Python 3.13 using pyenv
         run: |
