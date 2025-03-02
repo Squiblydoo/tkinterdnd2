@@ -27,6 +27,25 @@ jobs:
           python -m pip install --upgrade pip
           pip install .
 
+      - name: Verify installation
+        run: |
+          python -c "import tkinterdnd2; print('tkinterdnd2 imported successfully')"
+          python -m pip list | grep tkinterdnd2 || echo 'tkinterdnd2 not found!'
+
       - name: Run TkinterDnD2 test script
         run: |
-          python -c "from tkinterdnd2 import TkinterDnD; root = TkinterDnD.Tk(); root.mainloop()"
+          python -c "
+          from tkinterdnd2 import TkinterDnD
+          import time
+          
+          try:
+              root = TkinterDnD.Tk()
+              root.withdraw()  # Hide window since we don't need to see it
+              print('TkinterDnD window created successfully')
+              time.sleep(2)  # Give some time to ensure no crashes
+              root.destroy()  # Cleanly exit
+              print('Test passed!')
+          except Exception as e:
+              print(f'Test failed: {e}')
+              exit(1)
+          "
