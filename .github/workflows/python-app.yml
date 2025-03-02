@@ -20,8 +20,8 @@ jobs:
         run: |
           brew update
           brew install pyenv
-          pyenv install 3.13.0
-          pyenv global 3.13.0
+          pyenv install 3.13.2
+          pyenv global 3.13.2
           echo "PYENV_ROOT=$HOME/.pyenv" >> $GITHUB_ENV
           echo "$HOME/.pyenv/bin" >> $GITHUB_PATH
           echo "$HOME/.pyenv/shims" >> $GITHUB_PATH
